@@ -1,0 +1,659 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #f4f6fb;
+    --surface: #ffffff;
+    --text: #182230;
+    --muted: #687386;
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --border: #e1e6ef;
+    --yellow: #fff0a6;
+    --green: #d8f3df;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+button, textarea, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 18px max(5%, calc((100% - 1100px) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    background: var(--primary);
+    color: white;
+    font-weight: 800;
+    font-size: 30px;
+    border-radius: 14px;
+}
+
+.brand h1, .brand p, h2, h3, p {
+    margin-top: 0;
+}
+
+.brand h1 {
+    font-size: 26px;
+    margin-bottom: 0;
+}
+
+.brand p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.version {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    background: #eeedff;
+    padding: 6px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.container {
+    width: min(900px, 92%);
+    margin: 36px auto;
+}
+
+.intro {
+    margin-bottom: 35px;
+}
+
+.eyebrow {
+    font-size: 45px;
+    letter-spacing: 1.6px;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.intro h2 {
+    font-size: clamp(27px, 5vw, 38px);
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.intro > p:last-child {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+.script-card, .progress-card, .teleprompter-card, .transcript-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 22px rgba(31, 41, 55, 0.035);
+}
+
+.section-heading, .progress-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.section-heading p, .progress-top p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+#wordCount, #progressCount {
+    color: var(--muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+textarea {
+    width: 100%;
+    min-height: 175px;
+    resize: vertical;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    background: #fbfcff;
+    outline: none;
+    color: var(--text);
+}
+
+textarea:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.10);
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 16px 0;
+}
+
+.settings-row label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+select {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: white;
+    outline: none;
+    max-width: 190px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 11px 15px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    color: white;
+    background: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: #eef0ff;
+    color: var(--primary-dark);
+}
+
+.btn-outline {
+    background: white;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.status {
+    margin: 16px 0 0;
+    padding: 11px 13px;
+    background: #f3f5fa;
+    color: #536174;
+    font-size: 12px;
+    border-radius: 9px;
+}
+
+.progress-track {
+    height: 9px;
+    border-radius: 20px;
+    background: #edf0f6;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: #22a06b;
+    transition: width 0.25s ease;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    margin-top: 17px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.done-dot {
+    background: #a8dfb8;
+}
+
+.current-dot {
+    background: #f1c644;
+}
+
+.remaining-dot {
+    background: #fff0a6;
+    border: 1px solid #e9d77d;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 15px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.live-indicator i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9ba4b3;
+}
+
+.live-indicator.listening i {
+    background: #e5484d;
+    box-shadow: 0 0 0 4px #ffe7e7;
+}
+
+.speech-display {
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 22px;
+    background: #fafbff;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    font-size: clamp(17px, 2.5vw, 21px);
+    line-height: 2.25;
+    overflow-wrap: anywhere;
+}
+
+.empty-state {
+    color: #8993a4;
+    font-size: 15px;
+}
+
+.speech-word {
+    border-radius: 4px;
+    padding: 2px 0;
+    transition: background 0.2s, color 0.2s;
+}
+
+.speech-word.done {
+    color: #7c8797;
+    background: var(--green);
+    text-decoration: line-through;
+    text-decoration-color: #93b99e;
+}
+
+.speech-word.current {
+    background: #f1c644;
+    color: #28200a;
+    box-shadow: 0 0 0 2px #f1c644;
+    border-radius: 3px;
+}
+
+.speech-word.remaining {
+    background: var(--yellow);
+    color: #413713;
+}
+
+.teleprompter-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 13px;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.text-button {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.transcript-card > p {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+#transcript {
+    padding: 12px;
+    background: #f6f7fb;
+    border-radius: 9px;
+    min-height: 45px;
+    margin-bottom: 10px;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 15px !important;
+}
+
+footer {
+    text-align: center;
+    font-size: 20px;
+    color: #1b468f;
+    padding: 10px 0 25px;
+}
+
+@media (max-width: 600px) {
+    .topbar {
+        padding: 14px 4%;
+    }
+
+    .container {
+        margin-top: 24px;
+    }
+
+    .script-card, .progress-card, .teleprompter-card, .transcript-card {
+        padding: 17px;
+    }
+
+    .version {
+        font-size: 9px;
+    }
+
+    .settings-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .controls .btn {
+        flex: 1 1 42%;
+    }
+
+    .speech-display {
+        padding: 15px;
+        max-height: 400px;
+    }
+}
+
+.fullscreen-mode {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #111827;
+    color: white;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.fullscreen-mode #speechDisplay {
+    font-size: 30px;
+    line-height: 2;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.fullscreen-mode .speech-word.remaining {
+    background: transparent;
+    color: #d1d5db;
+}
+
+.fullscreen-mode .speech-word.done {
+    color: #4ade80;
+}
+
+.fullscreen-mode .speech-word.current {
+    background: #facc15;
+    color: #111827;
+}
+
+#fullscreenBtn {
+    cursor: pointer;
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN - SPEAKTRACK
+   ============================== */
+
+/* Prevent unwanted horizontal scrolling */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+/* Main app containers */
+.container,
+.app-container,
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tablet screens */
+@media (max-width: 992px) {
+    .container,
+    .app-container,
+    .main-container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .speech-word {
+        overflow-wrap: anywhere;
+    }
+
+    .fullscreen-mode {
+        padding: 24px;
+    }
+
+    .fullscreen-mode #speechDisplay {
+        font-size: 27px;
+        line-height: 1.9;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    .container,
+    .app-container,
+    .main-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    p {
+        overflow-wrap: anywhere;
+    }
+
+    /* Buttons adapt to narrow screens */
+    button {
+        max-width: 100%;
+        min-height: 42px;
+        white-space: normal;
+    }
+
+    .controls,
+    .button-group,
+    .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .controls button,
+    .button-group button,
+    .action-buttons button {
+        flex: 1 1 130px;
+    }
+
+    /* Script input */
+    textarea,
+    input,
+    select {
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 160px;
+    }
+
+    /* Speech text */
+    #speechDisplay {
+        font-size: 18px;
+        line-height: 1.9;
+        overflow-wrap: anywhere;
+    }
+
+    /* Full-screen teleprompter */
+    .fullscreen-mode {
+        padding: 16px 12px;
+    }
+
+    .fullscreen-mode #speechDisplay {
+        font-size: 22px;
+        line-height: 1.9;
+        margin: 20px auto;
+        overflow-wrap: anywhere;
+    }
+
+    .progress-bar,
+    progress {
+        max-width: 100%;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #speechDisplay {
+        font-size: 16px;
+    }
+
+    .fullscreen-mode #speechDisplay {
+        font-size: 19px;
+    }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .fullscreen-mode {
+        padding: 10px 20px;
+    }
+
+    .fullscreen-mode #speechDisplay {
+        font-size: 21px;
+        line-height: 1.7;
+        margin-top: 10px;
+    }
+}
+
+/* Fix scrolling in full-screen teleprompter */
+
+/* Fix full-screen scrolling */
+body.fullscreen-mode {
+    position: static;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body.fullscreen-mode #speechDisplay {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    overflow: visible;
+}
+
+body.fullscreen-mode .speech-word.current {
+    scroll-margin-top: 35vh;
+    scroll-margin-bottom: 35vh;
+}

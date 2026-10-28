@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakTrack | Smart Speech Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-icon">S</div>
+            <div>
+                <h1>SpeakTrack</h1>
+                <p>Your speech, always on track.</p>
+            </div>
+        </div>
+        <span class="version">BETA · VERSION 1</span>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p class="eyebrow">YOUR PERSONAL SPEECH ASSISTANT</p>
+            <h2>Speak with confidence.</h2>
+            <p>Focus on your audience. We'll help you remember where to continue.</p>
+        </section>
+
+        <section class="script-card">
+            <div class="section-heading">
+                <div>
+                    <h3>Your speech</h3>
+                    <p>Paste your prepared script below.</p>
+                </div>
+                <span id="wordCount">0 words</span>
+            </div>
+
+            <textarea id="scriptInput"
+                placeholder="Paste your entire speech here...&#10;&#10;Example: Good morning everyone. Today, I am going to talk about artificial intelligence."></textarea>
+
+            <div class="settings-row">
+                <label for="language">Recognition language</label>
+                <select id="language">
+                    <option value="en-IN" selected>English (India)</option>
+                    <option value="en-US">English (US)</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="hi-IN">Hindi</option>
+                </select>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">🎙 Start speaking</button>
+                <button id="pauseBtn" class="btn btn-secondary" disabled>Ⅱ Pause</button>
+                <button id="resumeBtn" class="btn btn-secondary" disabled>▶ Resume</button>
+                <button id="resetBtn" class="btn btn-outline">↺ Reset</button>
+
+                <button id="fullscreenBtn" class="secondary-btn">
+    ⛶ Full Screen
+</button>
+            </div>
+
+            <p id="status" class="status" role="status" aria-live="polite">
+                Ready. Paste your speech and press Start speaking.
+            </p>
+        </section>
+
+        <section class="progress-card">
+            <div class="progress-top">
+                <div>
+                    <h3>Your progress</h3>
+                    <p id="progressText">0% completed</p>
+                </div>
+                <span id="progressCount">0 / 0 words</span>
+            </div>
+            <div class="progress-track">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <div class="legend">
+                <span><i class="dot done-dot"></i> Spoken</span>
+                <span><i class="dot current-dot"></i> Continue here</span>
+                <span><i class="dot remaining-dot"></i> Remaining</span>
+            </div>
+        </section>
+
+        <section class="teleprompter-card">
+            <div class="section-heading">
+                <div>
+                    <h3>Live teleprompter</h3>
+                    <p>Your script updates as you speak.</p>
+                </div>
+                <span class="live-indicator"><i></i> <span id="liveLabel">NOT LISTENING</span></span>
+            </div>
+
+            <div id="speechDisplay" class="speech-display">
+                <p class="empty-state">Your speech will appear here. Paste your script above to begin.</p>
+            </div>
+
+            <div class="teleprompter-footer">
+                <span>Spoken words fade automatically.</span>
+                <button id="scrollBtn" class="text-button">Go to current word ↓</button>
+            </div>
+        </section>
+
+        <section class="transcript-card">
+            <h3>What the microphone hears</h3>
+            <p id="transcript" aria-live="polite">Your recognized speech will appear here.</p>
+            <p class="hint">Recognition can make mistakes. This first version uses spoken-word matching, so check the highlight if you skip or repeat a sentence.</p>
+        </section>
+
+        <footer>
+            SpeakTrack · Built to help you speak confidently.
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
